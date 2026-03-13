@@ -1,0 +1,162 @@
+/* ============================================
+   SALESFORCE STYLE UI - PINK VERSION
+   FOR FRAPPE v15
+   ============================================ */
+
+:root {
+    --primary: #e2f3eb;        /* Pink */
+    --bg-soft: #eff5ef;
+    --border-soft: #A2CB8B;
+    --hover-soft: #a9d291;
+}
+.navbar-home img {
+  max-height: 41px !important;
+}
+
+#navbar-breadcrumbs 
+{    left: 32% !important;
+margin-top: 122px !important;
+    top: 42% !important;
+    position: relative !important;
+    /* right: -16%; */
+    /* display: none !important; */
+}
+
+/* GLOBAL */
+body {
+    background: var(--bg-soft) !important;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+.layout-main-section {
+    background: var(--bg-soft) !important;
+    padding: 20px !important;
+}
+
+/* NAVBAR */
+.navbar {
+    background: var(--primary) !important;
+    height: 70px;
+}
+
+/* Center Logo */
+.navbar .container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative;
+}
+
+.navbar-brand {
+    position: absolute !important;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-brand img {
+    height: 65px !important;
+}
+
+/* SEARCH BAR */
+.navbar .search-bar input {
+    border-radius: 25px !important;
+    background: white !important;
+    border: none !important;
+}
+
+/* SIDEBAR */
+.layout-side-section {
+    background: white !important;
+    border-right: 1px solid var(--border-soft);
+    width: 240px !important;
+}
+
+.standard-sidebar-item {
+    border-radius: 8px;
+    margin: 5px 10px;
+    padding: 8px 12px;
+}
+
+.standard-sidebar-item:hover {
+    background: var(--hover-soft) !important;
+    color: var(--primary) !important;
+}
+
+.standard-sidebar-item.selected {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+/* RECORD HEADER */
+.page-head {
+    background: white !important;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 6px solid var(--primary);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.page-head h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* STATUS BADGE */
+.indicator {
+    border-radius: 25px !important;
+    padding: 5px 14px !important;
+    font-weight: 600 !important;
+}
+
+/* HORIZONTAL TABS */
+.nav-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.nav-tabs .nav-link {
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+}
+
+.nav-tabs .nav-link.active {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+/* FORM CARDS */
+.form-section {
+    background: white !important;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* FIELDS */
+.form-control {
+    border-radius: 8px !important;
+    border: 1px solid var(--border-soft) !important;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: #33a570 !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+.btn-default {
+    border-radius: 8px !important;
+}
+
+/* TIMELINE */
+.timeline-item {
+    background: white !important;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
