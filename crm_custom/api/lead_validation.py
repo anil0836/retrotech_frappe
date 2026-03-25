@@ -12,10 +12,7 @@ def validate_salesforce_duplicate(doc, method):
     )
 
     if exists:
-        frappe.msgprint("❌ Lead already exists in Salesforce (Lead or Contact).",
-                         indicator="red",
-                         title="Duplicate Lead")
-        frappe.validated = False
+        frappe.throw("Lead already exists in Salesforce (Lead or Contact)")
 
 
 

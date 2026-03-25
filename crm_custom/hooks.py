@@ -150,6 +150,9 @@ app_include_css = [
 doc_events = {
     "Lead": {
         "before_insert": "crm_custom.api.lead_validation.validate_salesforce_duplicate"
+    },
+     "CRMAccount": {
+        "after_save": "crm_custom.events.account.after_save"
     }
 }
 
