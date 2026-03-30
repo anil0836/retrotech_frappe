@@ -35,32 +35,41 @@ def query_salesforce(object_name, where_clause):
     data = response.json()
     return data.get("totalSize", 0) > 0
 
-# Main duplicate check function
+
+# Main duplicate check function (UPDATED)
 def check_salesforce_lead(email=None, phone=None, mobile=None, secondary_email=None):
     phone = clean_number(phone)
     mobile = clean_number(mobile)
 
-    conditions = []
+    duplicates = {
+        "email": False,
+        "phone": False,
+        "mobile": False,
+        "secondary_email": False
+    }
 
+    # 🔹 Email check
     if email:
-        conditions.append(f"Email = '{email}'")
+        if query_salesforce("Lead", f"Email = '{email}'") or \
+           query_salesforce("Contact", f"Email = '{email}'"):
+            duplicates["email"] = True
+
+    # 🔹 Phone check
     if phone:
-        conditions.append(f"Phone LIKE '%{phone}%'")
+        if query_salesforce("Lead", f"Phone LIKE '%{phone}%'") or \
+           query_salesforce("Contact", f"Phone LIKE '%{phone}%'"):
+            duplicates["phone"] = True
+
+    # 🔹 Mobile check
     if mobile:
-        conditions.append(f"MobilePhone LIKE '%{mobile}%'")
+        if query_salesforce("Lead", f"MobilePhone LIKE '%{mobile}%'") or \
+           query_salesforce("Contact", f"MobilePhone LIKE '%{mobile}%'"):
+            duplicates["mobile"] = True
+
+    # 🔹 Secondary Email check
     if secondary_email:
-        conditions.append(f"Secondary_Email__c = '{secondary_email}'")
+        if query_salesforce("Lead", f"Secondary_Email__c = '{secondary_email}'") or \
+           query_salesforce("Contact", f"Secondary_Email__c = '{secondary_email}'"):
+            duplicates["secondary_email"] = True
 
-    if not conditions:
-        return False
-
-    where_clause = " OR ".join(conditions)
-
-    # Check Lead object
-    if query_salesforce("Lead", where_clause):
-        return True
-    # Check Contact object
-    if query_salesforce("Contact", where_clause):
-        return True
-
-    return False
+    return duplicates
